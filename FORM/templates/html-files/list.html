@@ -1,0 +1,98 @@
+{% extends 'html-files/layout.html' %}
+
+{% block body %}
+
+<header  class='_Onset'>
+    <center>
+        Events-LIST 
+    </center>
+    <a  href="{% url 'index-function' %}">
+        <button class='_url'>
+            View Form
+        </button> 
+    </a>
+    <br><hr>
+</header>
+<div class='_Offset'>
+    {% if list %}
+        {% for i in list %} 
+            <h2 style='color: khaki'>Full-Name</h2>
+            <p>{{ i.Name }} {{ i.Surname }}
+            <h1 style='color: Dodgerblue'>Event</h1>
+            <p>{{ i.Event }} on {{ i.Date }} <br> Address - {{ i.Address }}</p> 
+            <a href="{% url 'delete' i.id %}">
+                <button 
+                class='_button'>
+                    Delete ⨉
+                </button>
+            </a>
+            <a href="{% url 'update' i.id %}">
+                <button class='_button'>
+                    Update ⇋
+                </button>
+                </a><hr>
+        {% endfor %}
+    {% else %}
+        <center>
+            <h1 id='_No-list'>
+                No Lists
+            </h1>
+        </center>
+    {% endif %}
+</div>
+<style>
+    #_No-list {
+        background-color: Black;
+        color: Red;
+        padding: 50px;
+        width: fit-content;
+        margin: auto;
+        margin-top: 35px;
+        border: 1px solid Gold;
+    }
+    ._Del-button {
+                    padding-right: 4px;
+                    margin-left: auto;
+                    padding: 50px;
+                }
+        ._button {
+                padding: 2px;
+                width: 100px;
+                height: 25px;
+                background-color: Black;
+                color: Ghostwhite;
+                font-family: cursive;
+                border: 1px solid lightgrey;
+            }
+                ._button:hover {
+                    color: Red;
+                }
+._url {
+    width: 100px;
+    height: 25px;
+    padding: 5px;
+    background-color: Black;
+    color: Ghostwhite;
+    border: 1px solid Dodgerblue;
+}
+    ._url:hover {
+        color: Red;
+    }
+._Onset {
+    position: fixed;
+    padding-left: 5px;
+    width: 100vw;
+    font-size: 40px;
+    background-color: black;
+    padding-left: 5px;
+}
+._Offset {
+    padding-left: 5px;
+    color: bisque;
+    padding-top: 115px;
+    font-size: 10px;
+    font-size: 15px;
+}
+</style>
+
+{% endblock %}

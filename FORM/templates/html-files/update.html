@@ -1,0 +1,70 @@
+{% extends 'html-files/layout.html' %}
+
+{% block body %}
+<header>
+    <center>
+        Update Events List
+    </center>
+    <a href="{% url 'list-function' %}">
+        <button class='_url'>
+            Back
+        </button>
+    </a> 
+</header><hr>
+<div id='_list-info'>
+    {{ Event_list }}
+</div>
+<div>
+    <form action="" method='POST'>
+        {% csrf_token %}
+        <div id='_update-list'>
+            <p>{{ form.Name }}</p>
+            <p>{{ form.Surname }}</p> 
+            <p>{{ form.Event }}</p>
+            <p> {{ form.Date }} </p>
+            <p>{{ form.Address }}</p>
+        </div> <hr>
+        <input 
+        type='submit'
+        class='_buttons'
+        value='Submit-Update'> <hr>
+    </form>
+</div>
+<style>
+    header {
+        padding-left: 5px;
+        font-size: 40px;
+    }
+    #_list-info {
+        padding-left: 5px;
+    }
+    #_update-list {
+        padding-left: 5px;
+    }
+._url {
+    width: 100px;
+    height: 25px;
+    padding: 5px;
+    background-color: Black;
+    color: Ghostwhite;
+    border: 1px solid Dodgerblue;
+    font-family: Georgia, Verdana, sans-serif;    
+}
+    ._url:hover {
+        color: Red;
+    }
+._buttons {
+    width: 120px;
+    height: 25px;
+    padding: 5px;
+    margin: 5px;
+    background-color: Black;
+    color: Ghostwhite;
+    border: 1px solid Gold;
+}
+    ._buttons:hover {
+        border-bottom: 2px solid Red;
+    }
+</style>
+
+{% endblock %}
